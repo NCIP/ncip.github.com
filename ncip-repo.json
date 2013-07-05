@@ -1,0 +1,425 @@
+var ncip_repos = [
+  {
+    "name": "cagrid",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-docs",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-core",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-general",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-portal",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-workflow",
+    "group": "caGrid"
+  },
+  {
+    "name": "grid-incubation",
+    "group": "caGrid"
+  },
+  {
+    "name": "taverna-cagrid",
+    "group": "caGrid"
+  },
+  {
+    "name": "caB2B",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-iphone-app",
+    "group": "caGrid"
+  },
+  {
+    "name": "catrip",
+    "group": "caGrid"
+  },
+  {
+    "name": "caobr",
+    "group": "caGrid"
+  },
+  {
+    "name": "cacore-sdk",
+    "group": "caCORE"
+  },
+  {
+    "name": "cacore-sdk-docs",
+    "group": "caCORE"
+  },
+  {
+    "name": "common-security-module",
+    "group": "caCORE"
+  },
+  {
+    "name": "common-security-module-docs",
+    "group": "caCORE"
+  },
+  {
+    "name": "common-logging-module",
+    "group": "caCORE"
+  },
+  {
+    "name": "iso21090",
+    "group": "caCORE"
+  },
+  {
+    "name": "xmihandler",
+    "group": "caCORE"
+  },
+  {
+    "name": "cacore-sdk-pre411",
+    "group": "caCORE"
+  },
+  {
+    "name": "python-api",
+    "group": "caCORE"
+  },
+  {
+    "name": "nci-value-set-editor",
+    "group": "EVS"
+  },
+  {
+    "name": "nci-mapping-tool",
+    "group": "EVS"
+  },
+  {
+    "name": "nci-report-writer",
+    "group": "EVS"
+  },
+  {
+    "name": "nci-metathesaurus-browser",
+    "group": "EVS"
+  },
+  {
+    "name": "nci-term-browser",
+    "group": "EVS"
+  },
+  {
+    "name": "nci-term-suggestion",
+    "group": "EVS"
+  },
+  {
+    "name": "lexevs",
+    "group": "EVS",
+    "channel": "lexevs"
+  },
+  {
+    "name": "cadsrapi",
+    "group": "caDSR"
+  },
+  {
+    "name": "cdecurate",
+    "group": "caDSR"
+  },
+  {
+    "name": "cdebrowser",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr_admintool",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsrcrddatasvc",
+    "group": "caDSR"
+  },
+  {
+    "name": "sentinel",
+    "group": "caDSR"
+  },
+  {
+    "name": "umlmodelbrowser",
+    "group": "caDSR"
+  },
+  {
+    "name": "formbuilder",
+    "group": "caDSR"
+  },
+  {
+    "name": "semantictools",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsrbulkloader",
+    "group": "caDSR"
+  },
+  {
+    "name": "freestylesearch",
+    "group": "caDSR"
+  },
+  {
+    "name": "edct",
+    "group": "caDSR"
+  },
+  {
+    "name": "cagwas",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "caintegrator",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "caintegrator-analysis-server",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "ispy",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "rembrandt",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "cma",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "eagle",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "webgenome",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "catissue",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-advanced-query",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-cacore-sdk",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-cas",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-dao",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-idp-authentication-manager",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-old",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-participant-manager",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-security-manager",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-simple-query",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-utilities",
+    "group": "caTissue"
+  },
+  {
+    "name": "commons-module",
+    "group": "caTissue"
+  },
+  {
+    "name": "cynamic-extensions",
+    "group": "caTissue"
+  },
+  {
+    "name": "metadata-based-query",
+    "group": "caTissue"
+  },
+  {
+    "name": "tmt-catisse",
+    "group": "caTissue"
+  },
+  {
+    "name": "idpauthenticationmanager-persistent",
+    "group": "caTissue"
+  },
+  {
+    "name": "keyword-search",
+    "group": "caTissue"
+  },
+  {
+    "name": "query-module",
+    "group": "caTissue"
+  },
+  {
+    "name": "security-module",
+    "group": "caTissue"
+  },
+  {
+    "name": "wustl-common-package",
+    "group": "caTissue"
+  },
+  {
+    "name": "wustl-common-utilities",
+    "group": "caTissue"
+  },
+  {
+    "name": "gsid",
+    "group": "caTissue"
+  },
+  {
+    "name": "cgmdr",
+    "group": "cgMDR"
+  },
+  {
+    "name": "cgmdr-nci-uk",
+    "group": "cgMDR"
+  },
+  {
+    "name": "mdr",
+    "group": "cgMDR"
+  },
+  {
+    "name": "caarray",
+    "group": "Microarray Tools"
+  },
+  {
+    "name": "caarray-docs",
+    "group": "Microarray Tools"
+  },
+  {
+    "name": "bioconductor",
+    "group": "Microarray Tools"
+  },
+  {
+    "name": "dwd",
+    "group": "Microarray Tools"
+  },
+  {
+    "name": "visda",
+    "group": "Microarray Tools"
+  },
+  {
+    "name": "calims",
+    "group": "Microarray Tools"
+  },
+  {
+    "name": "c3pr",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "psc",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "caaersappdev",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "labviewer",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "labviewer-docs",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "cacis",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "cacis-docs",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "clinical connector",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "nbia",
+    "group": "In vivo imaging"
+  },
+  {
+    "name": "ivim",
+    "group": "In vivo imaging"
+  },
+  {
+    "name": "aim",
+    "group": "In vivo imaging"
+  },
+  {
+    "name": "xip",
+    "group": "In vivo imaging",
+    "channel": "OpenXIP"
+  },
+  {
+    "name": "avt",
+    "group": "In vivo imaging",
+    "channel": "OpenXIP"
+  },
+  {
+    "name": "pid",
+    "group": "Proteomics"
+  },
+  {
+    "name": "prot-express",
+    "group": "Proteomics"
+  },
+  {
+    "name": "qfive",
+    "group": "Proteomics"
+  },
+  {
+    "name": "cabio",
+    "group": "Genomic annotation"
+  },
+  {
+    "name": "geneconnect",
+    "group": "Genomic annotation"
+  },
+  {
+    "name": "camod",
+    "group": "Animal models"
+  },
+  {
+    "name": "caelmir",
+    "group": "Animal models"
+  },
+  {
+    "name": "caimage",
+    "group": "Tissue banking and histopathology"
+  },
+  {
+    "name": "qualityindicator",
+    "group": "Tissue banking and histopathology"
+  },
+  {
+    "name": "common-biorepository-model",
+    "group": "Tissue banking and histopathology"
+  },
+  {
+    "name": "caadapter",
+    "group": "No group tags"
+  },
+  {
+    "name": "cananolab",
+    "group": "No group tags"
+  },
+  {
+    "name": "dmr",
+    "group": "No group tags"
+  },
+];
