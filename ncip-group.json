@@ -1,0 +1,76 @@
+var ncip_groups = [
+  {
+    "name":"caGrid",
+    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines",
+    "category":"semantics"
+  },
+  {
+    "name":"caCORE",
+    "description":"caCORE contains tools and APIs that provide the building blocks for the development of interoperable information management systems",
+    "category":"semantics"
+  },
+  {
+    "name":"EVS",
+    "description":"EVS provides tools and services to accurately code, analyze and share cancer and biomedical research, clinical, and public health information",
+    "category":"semantics"
+  },
+  {
+    "name":"caDSR",
+    "description":"caDSR is a collection of tools for documenting and sharing human- and machine-readable data descriptions",
+    "category":"semantics"
+  },
+  {
+    "name":"caIntegrator Portals",
+    "description":"The caIntegrator portals bring together diverse data types for integrative query and analysis",
+    "category":"biology"
+  },
+  {
+    "name":"caTissue",
+    "description":"caTissue is a web-based tool for managing biospecimens",
+    "category":"translational"
+  },
+  {
+    "name":"cgMDR",
+    "description":"cgMDR (Cancer Grid Metadata Repository) provides a framework for supporting a light weighte ISO 11179 stadards metadata repository",
+    "category":"semantics"
+  },
+  {
+    "name":"Microarray Tools",
+    "description":"Tools to support the management and analysis of microarray data",
+    "category":"biology"
+  },
+  {
+    "name":"Clinical Trials",
+    "description":"Tools to support clinical trials data collection and management",
+    "category":"translational"
+  },
+  {
+    "name":"In vivo imaging",
+    "description":"Tools to support the management and analysis of medical imaging data",
+    "category":"translational"
+  },
+  {
+    "name":"Proteomics",
+    "description":"Tools to support the management and analysis of proteomics data",
+    "category":"biology"
+  },
+  {
+    "name":"Genomic annotation",
+    "description":"Tools to support the management and sharing of genomics annotations",
+    "category":"biology"
+  },
+  {
+    "name":"Animal models",
+    "description":"Tools to support the collection and management of animal model information",
+    "category":"biology"
+  },
+  {
+    "name":"Tissue banking and histopathology",
+    "description":"Tools to support the management and sharing of tissue banking and histopathology data",
+    "category":"translational"
+  },
+  {
+    "name":"Additional repositories",
+    "description":"Repositories that are not categorized into the existing groups"
+  },
+];
