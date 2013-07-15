@@ -48,8 +48,20 @@
         return repoDescriptions[repo.name] || repo.description;
       }
 
+
+
+      function addRepo(repo) {
+        var $item = $("<li>").addClass("repo grid-1 " + repo.category);
+        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+        $link.append($("<h2>").text(repo.name));
+        $link.append($("<p>").text(repoDescription(repo)));
+        $item.appendTo("#repos");
+      }
+
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
+
+        console.log("Recent " + repo.name);
 
         var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
         $item.append($("<span>").addClass("name").append($name));
@@ -70,12 +82,28 @@
         $item.appendTo("#recently-updated-repos");
       }
 
-      function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + repo.category);
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
+      function addRecentlyUpdatedRepos(repos) {
+          console.log("addRecentlyUpdatedRepos");
+          $(function () {
+            $("#num-repos").text(repos.length);
+
+            // Convert pushed_at to Date.
+            $.each(repos, function (i, repo) {
+              repo.pushed_at = new Date(repo.pushed_at);
+            });
+
+            // Sort by most-recently pushed to.
+            repos.sort(function (a, b) {
+              if (a.pushed_at < b.pushed_at) return 1;
+              if (b.pushed_at < a.pushed_at) return -1;
+              return 0;
+            });
+
+            console.log("ADDING RECENTLY UPDATED");
+            $.each(repos.slice(0, 3), function (i, repo) {
+              addRecentlyUpdatedRepo(repo);
+            });
+        });
       }
 
       function getReposFromGithub(repos, page) {
@@ -120,8 +148,6 @@
 
       function selectReposFromGroup(repoGroupName) {
 
-        console.log("Group name = " + repoGroupName);
-
         var repoGroups = ncip_groups;
 
         var repoGroup = repoGroups[repoGroupName];
@@ -130,7 +156,6 @@
           $.each(repoGroups, function (i, group) {
             if( group.name === repoGroupName ) {
               repoGroup = group;
-              console.log("FOUND GROUP " + group.name );
               }
             });
         });
@@ -142,11 +167,8 @@
 
             var matchedToGroup = false;
 
-            console.log("looking for repo " + repo.name);
-
             $.each(ncip_repos, function (i, ncip_repo) {
               if( repo.name === ncip_repo.name ) {
-                console.log("found repo " + repo.name);
                 if( ncip_repo.group === repoGroupName ) {
                   matchedToGroup = true;
                 }
@@ -166,28 +188,6 @@
       }
       selectReposFromGroup(repoGroupName);
 
-
-      function addRecentlyUpdatedRepos(repos) {
-          $(function () {
-            $("#num-repos").text(repos.length);
-
-            // Convert pushed_at to Date.
-            $.each(repos, function (i, repo) {
-              repo.pushed_at = new Date(repo.pushed_at);
-            });
-
-            // Sort by most-recently pushed to.
-            repos.sort(function (a, b) {
-              if (a.pushed_at < b.pushed_at) return 1;
-              if (b.pushed_at < a.pushed_at) return -1;
-              return 0;
-            });
-
-            $.each(repos.slice(0, 3), function (i, repo) {
-              addRecentlyUpdatedRepo(repo);
-            });
-        });
-      }
       addRecentlyUpdatedRepos(reposInGroup);
 
       function addReposFromGroup(listOfRepos) {
