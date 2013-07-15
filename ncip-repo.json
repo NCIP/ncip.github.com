@@ -48,6 +48,14 @@ var ncip_repos = [
     "group": "caGrid"
   },
   {
+    "name": "cagrid2-wsrf",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid2",
+    "group": "caGrid"
+  },
+  {
     "name": "cacore-sdk",
     "group": "caCORE"
   },
