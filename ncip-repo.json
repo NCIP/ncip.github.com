@@ -24,15 +24,15 @@ var ncip_repos = [
     "group": "caGrid"
   },
   {
-    "name": "grid-incubation",
+    "name": "cagrid-incubation",
     "group": "caGrid"
   },
   {
-    "name": "taverna-cagrid",
+    "name": "taverna-grid",
     "group": "caGrid"
   },
   {
-    "name": "caB2B",
+    "name": "cab2b",
     "group": "caGrid"
   },
   {
