@@ -61,8 +61,6 @@
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
 
-        console.log("Recent " + repo.name);
-
         var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
         $item.append($("<span>").addClass("name").append($name));
 
@@ -83,7 +81,7 @@
       }
 
       function addRecentlyUpdatedRepos(repos) {
-          console.log("addRecentlyUpdatedRepos");
+
           $(function () {
             $("#num-repos").text(repos.length);
 
@@ -99,54 +97,15 @@
               return 0;
             });
 
-            console.log("ADDING RECENTLY UPDATED");
             $.each(repos.slice(0, 3), function (i, repo) {
               addRecentlyUpdatedRepo(repo);
             });
         });
       }
 
-      function getReposFromGithub(repos, page) {
-        repos = repos || [];
-        page = page || 1;
+      function selectReposFromGroup(reposFromGithub,repoGroupName) {
 
-        var uri = "https://api.github.com/orgs/ncip/repos?callback=?"
-                + "&per_page=100"
-                + "&page="+page;
-
-        $.getJSON(uri, function (result) {
-          if (result.data && result.data.length > 0) {
-            repos = repos.concat(result.data);
-            getReposFromGithub(repos, page + 1);
-          }
-          else {
-            $(function () {
-              $("#num-repos").text(repos.length);
-
-              // Convert pushed_at to Date.
-              $.each(repos, function (i, repo) {
-                repo.pushed_at = new Date(repo.pushed_at);
-              });
-
-            });
-
-            // Sort alphabetically by repository name
-            repos.sort(function (a, b) {
-              var namea = a.name.toLowerCase();
-              var nameb = b.name.toLowerCase();
-              if (namea > nameb) return 1;
-              if (nameb > namea) return -1;
-              return 0;
-            });
-
-          }
-        });
-
-      var reposFromGithub = repos;
-
-      var reposInGroup = [];
-
-      function selectReposFromGroup(repoGroupName) {
+        var reposInGroup = [];
 
         var repoGroups = ncip_groups;
 
@@ -185,10 +144,8 @@
 
         });
 
+        return reposInGroup;
       }
-      selectReposFromGroup(repoGroupName);
-
-      addRecentlyUpdatedRepos(reposInGroup);
 
       function addReposFromGroup(listOfRepos) {
         $(function () {
@@ -197,7 +154,52 @@
               });
           });
       }
-      addReposFromGroup(reposInGroup);
+
+      function getReposFromGithub(repos, page) {
+
+        repos = repos || [];
+        page = page || 1;
+
+        var uri = "https://api.github.com/orgs/ncip/repos?callback=?"
+                + "&per_page=100"
+                + "&page="+page;
+
+        $.getJSON(uri, function (result) {
+          if (result.data && result.data.length > 0) {
+            repos = repos.concat(result.data);
+            getReposFromGithub(repos, page + 1);
+          }
+          else {
+            $(function () {
+              $("#num-repos").text(repos.length);
+
+              // Convert pushed_at to Date.
+              $.each(repos, function (i, repo) {
+                repo.pushed_at = new Date(repo.pushed_at);
+              });
+
+            });
+
+            // Sort alphabetically by repository name
+            repos.sort(function (a, b) {
+              var namea = a.name.toLowerCase();
+              var nameb = b.name.toLowerCase();
+              if (namea > nameb) return 1;
+              if (nameb > namea) return -1;
+              return 0;
+            });
+
+            //
+            // Process the repositories
+            //
+            var reposInGroup = selectReposFromGroup(repos,repoGroupName);
+
+            addRecentlyUpdatedRepos(reposInGroup);
+
+            addReposFromGroup(reposInGroup);
+
+          }
+        });
 
       }
       getReposFromGithub();
