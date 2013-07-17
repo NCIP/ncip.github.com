@@ -48,6 +48,16 @@
         return repoDescriptions[repo.name] || repo.description;
       }
 
+
+
+      function addRepo(repo) {
+        var $item = $("<li>").addClass("repo grid-1 " + repo.category);
+        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+        $link.append($("<h2>").text(repo.name));
+        $link.append($("<p>").text(repoDescription(repo)));
+        $item.appendTo("#repos");
+      }
+
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
 
@@ -70,15 +80,83 @@
         $item.appendTo("#recently-updated-repos");
       }
 
-      function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + repo.category);
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
+      function addRecentlyUpdatedRepos(repos) {
+
+          $(function () {
+            $("#num-repos").text(repos.length);
+
+            // Convert pushed_at to Date.
+            $.each(repos, function (i, repo) {
+              repo.pushed_at = new Date(repo.pushed_at);
+            });
+
+            // Sort by most-recently pushed to.
+            repos.sort(function (a, b) {
+              if (a.pushed_at < b.pushed_at) return 1;
+              if (b.pushed_at < a.pushed_at) return -1;
+              return 0;
+            });
+
+            $.each(repos.slice(0, 3), function (i, repo) {
+              addRecentlyUpdatedRepo(repo);
+            });
+        });
+      }
+
+      function selectReposFromGroup(reposFromGithub,repoGroupName) {
+
+        var reposInGroup = [];
+
+        var repoGroups = ncip_groups;
+
+        var repoGroup = repoGroups[repoGroupName];
+
+        $(function () {
+          $.each(repoGroups, function (i, group) {
+            if( group.name === repoGroupName ) {
+              repoGroup = group;
+              }
+            });
+        });
+
+
+        $(function () {
+
+          $.each(reposFromGithub, function (i, repo) {
+
+            var matchedToGroup = false;
+
+            $.each(ncip_repos, function (i, ncip_repo) {
+              if( repo.name === ncip_repo.name ) {
+                if( ncip_repo.group === repoGroupName ) {
+                  matchedToGroup = true;
+                }
+              }
+            });
+
+            if( matchedToGroup ) {
+              if( !repo.category ) {
+                repo['category'] = repoGroup.category;
+              }
+              reposInGroup.push(repo);
+              }
+          });
+
+        });
+
+        return reposInGroup;
+      }
+
+      function addReposFromGroup(listOfRepos) {
+        $(function () {
+          $.each(listOfRepos, function (i, repo) {
+              addRepo(repo);
+              });
+          });
       }
 
       function getReposFromGithub(repos, page) {
+
         repos = repos || [];
         page = page || 1;
 
@@ -111,93 +189,17 @@
               return 0;
             });
 
+            //
+            // Process the repositories
+            //
+            var reposInGroup = selectReposFromGroup(repos,repoGroupName);
+
+            addRecentlyUpdatedRepos(reposInGroup);
+
+            addReposFromGroup(reposInGroup);
+
           }
         });
-
-      var reposFromGithub = repos;
-
-      var reposInGroup = [];
-
-      function selectReposFromGroup(repoGroupName) {
-
-        console.log("Group name = " + repoGroupName);
-
-        var repoGroups = ncip_groups;
-
-        var repoGroup = repoGroups[repoGroupName];
-
-        $(function () {
-          $.each(repoGroups, function (i, group) {
-            if( group.name === repoGroupName ) {
-              repoGroup = group;
-              console.log("FOUND GROUP " + group.name );
-              }
-            });
-        });
-
-
-        $(function () {
-
-          $.each(reposFromGithub, function (i, repo) {
-
-            var matchedToGroup = false;
-
-            console.log("looking for repo " + repo.name);
-
-            $.each(ncip_repos, function (i, ncip_repo) {
-              if( repo.name === ncip_repo.name ) {
-                console.log("found repo " + repo.name);
-                if( ncip_repo.group === repoGroupName ) {
-                  matchedToGroup = true;
-                }
-              }
-            });
-
-            if( matchedToGroup ) {
-              if( !repo.category ) {
-                repo['category'] = repoGroup.category;
-              }
-              reposInGroup.push(repo);
-              }
-          });
-
-        });
-
-      }
-      selectReposFromGroup(repoGroupName);
-
-
-      function addRecentlyUpdatedRepos(repos) {
-          $(function () {
-            $("#num-repos").text(repos.length);
-
-            // Convert pushed_at to Date.
-            $.each(repos, function (i, repo) {
-              repo.pushed_at = new Date(repo.pushed_at);
-            });
-
-            // Sort by most-recently pushed to.
-            repos.sort(function (a, b) {
-              if (a.pushed_at < b.pushed_at) return 1;
-              if (b.pushed_at < a.pushed_at) return -1;
-              return 0;
-            });
-
-            $.each(repos.slice(0, 3), function (i, repo) {
-              addRecentlyUpdatedRepo(repo);
-            });
-        });
-      }
-      addRecentlyUpdatedRepos(reposInGroup);
-
-      function addReposFromGroup(listOfRepos) {
-        $(function () {
-          $.each(listOfRepos, function (i, repo) {
-              addRepo(repo);
-              });
-          });
-      }
-      addReposFromGroup(reposInGroup);
 
       }
       getReposFromGithub();
