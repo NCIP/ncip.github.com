@@ -24,15 +24,15 @@ var ncip_repos = [
     "group": "caGrid"
   },
   {
-    "name": "grid-incubation",
+    "name": "cagrid-incubation",
     "group": "caGrid"
   },
   {
-    "name": "taverna-cagrid",
+    "name": "taverna-grid",
     "group": "caGrid"
   },
   {
-    "name": "caB2B",
+    "name": "cab2b",
     "group": "caGrid"
   },
   {
@@ -45,6 +45,14 @@ var ncip_repos = [
   },
   {
     "name": "caobr",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid2-wsrf",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid2",
     "group": "caGrid"
   },
   {
@@ -109,75 +117,65 @@ var ncip_repos = [
   },
   {
     "name": "lexevs",
-    "group": "EVS",
-    "channel": "lexevs"
-  },
+    "group": "EVS"
+  }, 
   {
-    "name": "cadsrapi",
+    "name": "lexevs-grid",
+    "group": "EVS"
+  }, 
+  {
+    "name": "lexevs-remote",
+    "group": "EVS"
+  }, 
+  {
+    "name": "edct-common",
     "group": "caDSR"
   },
   {
-    "name": "cdecurate",
+    "name": "edct-collector",
     "group": "caDSR"
   },
   {
-    "name": "cdebrowser",
+    "name": "edct-cadsr-api-server",
     "group": "caDSR"
   },
   {
-    "name": "cadsr_admintool",
+    "name": "edct-formbuilder",
     "group": "caDSR"
   },
   {
-    "name": "cadsrcrddatasvc",
+    "name": "cadsr-grid-dataservice",
     "group": "caDSR"
   },
   {
-    "name": "sentinel",
+    "name": "cadsr-uml-model-browser",
     "group": "caDSR"
-  },
-  {
-    "name": "umlmodelbrowser",
-    "group": "caDSR"
-  },
-  {
-    "name": "formbuilder",
-    "group": "caDSR"
-  },
-  {
-    "name": "semantictools",
-    "group": "caDSR"
-  },
-  {
-    "name": "cadsrbulkloader",
-    "group": "caDSR"
-  },
-  {
-    "name": "freestylesearch",
-    "group": "caDSR"
-  },
-  {
-    "name": "edct",
-    "group": "caDSR"
-  },
-  {
-    "name": "cagwas",
-    "group": "caIntegrator Portals"
   },
   {
     "name": "caintegrator",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "caintegrator-analysis-server",
+    "name": "stats-analysis-server",
+    "group": "caIntegrator Portals"
+  },{
+    "name": "lexevs",
+    "group": "EVS"
+  },
+  {
+    "name": "stats-analysis",
     "group": "caIntegrator Portals"
   },
+  {
+    "name": "stats-analysis-commons",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "stats-application-commons",
+    "group": "caIntegrator Portals"
+  }, 
   {
     "name": "ispy",
-    "group": "caIntegrator Portals"
-  },
-  {
-    "name": "rembrandt",
     "group": "caIntegrator Portals"
   },
   {
@@ -193,6 +191,10 @@ var ncip_repos = [
     "group": "caIntegrator Portals"
   },
   {
+    "name": "webgenome-integration",
+    "group": "caIntegrator Portals"
+  },
+  {
     "name": "catissue",
     "group": "caTissue"
   },
@@ -205,7 +207,7 @@ var ncip_repos = [
     "group": "caTissue"
   },
   {
-    "name": "catissue-cas",
+    "name": "catissue-CAS",
     "group": "caTissue"
   },
   {
@@ -217,7 +219,7 @@ var ncip_repos = [
     "group": "caTissue"
   },
   {
-    "name": "catissue-old",
+    "name": "catissue-migration-tool",
     "group": "caTissue"
   },
   {
@@ -241,19 +243,11 @@ var ncip_repos = [
     "group": "caTissue"
   },
   {
-    "name": "cynamic-extensions",
-    "group": "caTissue"
-  },
-  {
     "name": "metadata-based-query",
     "group": "caTissue"
   },
   {
     "name": "tmt-catisse",
-    "group": "caTissue"
-  },
-  {
-    "name": "idpauthenticationmanager-persistent",
     "group": "caTissue"
   },
   {
@@ -321,11 +315,23 @@ var ncip_repos = [
     "group": "Clinical Trials"
   },
   {
+    "name": "c3pr-docs",
+    "group": "Clinical Trials"
+  },
+  {
     "name": "psc",
     "group": "Clinical Trials"
   },
   {
-    "name": "caaersappdev",
+    "name": "psc-docs",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "caaers",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "caaers-docs",
     "group": "Clinical Trials"
   },
   {
@@ -345,19 +351,27 @@ var ncip_repos = [
     "group": "Clinical Trials"
   },
   {
+    "name": "ihub",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "ctms-commons",
+    "group": "Clinical Trials"
+  },
+  {
     "name": "clinical connector",
     "group": "Clinical Trials"
   },
   {
-    "name": "nbia",
+    "name": "national-biomedical-image-archive",
     "group": "In vivo imaging"
   },
   {
-    "name": "ivim",
+    "name": "invivo-imaging-middleware",
     "group": "In vivo imaging"
   },
   {
-    "name": "aim",
+    "name": "annotation-and-image-markup",
     "group": "In vivo imaging"
   },
   {
@@ -371,7 +385,7 @@ var ncip_repos = [
     "channel": "OpenXIP"
   },
   {
-    "name": "pid",
+    "name": "pathway-interaction-database",
     "group": "Proteomics"
   },
   {
@@ -395,6 +409,10 @@ var ncip_repos = [
     "group": "Animal models"
   },
   {
+    "name": "camod-docs",
+    "group": "Animal models"
+  },
+  {
     "name": "caelmir",
     "group": "Animal models"
   },
@@ -403,7 +421,7 @@ var ncip_repos = [
     "group": "Tissue banking and histopathology"
   },
   {
-    "name": "qualityindicator",
+    "name": "quality-indicator-portal",
     "group": "Tissue banking and histopathology"
   },
   {
@@ -419,7 +437,15 @@ var ncip_repos = [
     "group": "No group tags"
   },
   {
-    "name": "dmr",
+    "name": "ISAvalidator-ISAconverter-Bllmanager",
+    "group": "No group tags"
+  },
+  {
+    "name": "ISAValidatorWS",
+    "group": "No group tags"
+  },
+  {
+    "name": "digital-model-repository",
     "group": "No group tags"
   },
 ];
