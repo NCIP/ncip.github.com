@@ -8,10 +8,6 @@ var ncip_repos = [
     "group": "caGrid"
   },
   {
-    "name": "cagrid-incubation",
-    "group": "caGrid"
-  },
-  {
     "name": "cagrid-core",
     "group": "caGrid"
   },
@@ -29,6 +25,10 @@ var ncip_repos = [
   },
   {
     "name": "taverna-grid",
+    "group": "caGrid"
+  },
+  {
+    "name": "cagrid-incubation",
     "group": "caGrid"
   },
   {
@@ -188,10 +188,6 @@ var ncip_repos = [
     "group": "caIntegrator Portals"
   },
   {
-    "name": "ispy",
-    "group": "caIntegrator Portals"
-  },
-  {
     "name": "stats-application-commons",
     "group": "caIntegrator Portals"
   }, 
@@ -214,10 +210,6 @@ var ncip_repos = [
   {
     "name": "webgenome-integration",
     "group": "caIntegrator Portals"
-  },
-  {
-    "name": "catissue",
-    "group": "caTissue"
   },
   {
     "name": "catissue-advanced-query",
@@ -380,7 +372,7 @@ var ncip_repos = [
     "group": "Clinical Trials"
   },
   {
-    "name": "clinical connector",
+    "name": "clinical-connector",
     "group": "Clinical Trials"
   },
   {
