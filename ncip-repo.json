@@ -8,11 +8,11 @@ var ncip_repos = [
     "group": "caGrid"
   },
   {
-    "name": "cagrid-core",
+    "name": "cagrid-incubation",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-incubation",
+    "name": "cagrid-core",
     "group": "caGrid"
   },
   {
