@@ -144,6 +144,10 @@ var ncip_repos = [
     "group": "caDSR"
   },
   {
+    "name": "cadsr-bulk-loader",
+    "group": "caDSR"
+  },
+  {
     "name": "cadsr-grid-dataservice",
     "group": "caDSR"
   },
