@@ -175,6 +175,22 @@ var ncip_repos = [
     "group": "caIntegrator Portals"
   },
   {
+    "name": "cagwas",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "caintegrator-docs",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "caintegrator-data",
+    "group": "caIntegrator Portals"
+  },
+  {
+    "name": "ispy",
+    "group": "caIntegrator Portals"
+  },
+  {
     "name": "stats-application-commons",
     "group": "caIntegrator Portals"
   }, 
@@ -251,7 +267,7 @@ var ncip_repos = [
     "group": "caTissue"
   },
   {
-    "name": "tmt-catisse",
+    "name": "tmt-catissue",
     "group": "caTissue"
   },
   {
