@@ -136,6 +136,10 @@ var ncip_repos = [
     "group": "caDSR"
   },
   {
+    "name": "edct-analytics",
+    "group": "caDSR"
+  },
+  {
     "name": "edct-cadsr-api-server",
     "group": "caDSR"
   },
