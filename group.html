@@ -204,6 +204,14 @@
       }
       getReposFromGithub();
 
+      $.getJSON("https://api.github.com/orgs/ncip/members?callback=?", function (result) {
+        var members = result.data;
+
+        $(function () {
+          $("#num-members").text(members.length);
+        });
+      });
+
     })(jQuery);
     </script>
   </head>
