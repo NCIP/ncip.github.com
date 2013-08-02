@@ -21,6 +21,18 @@
         "missing2": "http://ncip.github.com/missing2/"
       };
 
+      var NCIPGlobal = NCIPGlobal || {};
+
+      var potentialRepos = window.localStorage.getItem('NCIPrepos');
+
+      console.log("NCIPDate =" + window.localStorage.getItem('NCIPDate'));
+
+      if (potentialRepos) {
+        console.log( 'repos in localStorage' );
+        console.log( potentialRepos );
+        }
+
+
       function urlQueryString(key) {
           var vars = [], hash;
           var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');

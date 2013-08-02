@@ -17,6 +17,32 @@
 
       var homePageURL = "http://localhost:8000/"; // http://ncip.github.io/
 
+      var NCIPGlobal = NCIPGlobal || {};
+
+      NCIPGlobal.namespace = function (ns_string) {
+
+        var parts = ns_string.split('.'),
+            parent = NCIPGlobal,
+            i;
+
+        // strip redundant leading global
+        if (parts[0] === "NCIPGlobal" ) {
+          parts = parts.slice(1);
+          }
+
+        for (i = 0; i < parts.length; i += 1) {
+          // create a property if it doesn't exist
+          if (typeof parent[parts[i]] === "undefined") {
+            parent[parts[i]] = {};
+            }
+          // insert the property in a nested pattern
+          parent = parent[parts[i]];
+          }
+
+        return parent;
+
+        };
+
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
 
@@ -52,7 +78,7 @@
         page = page || 1;
 
         var uri = "https://api.github.com/orgs/ncip/repos?callback=?"
-                + "&per_page=100"
+                + "&per_page=200"
                 + "&page="+page;
 
         $.getJSON(uri, function (result) {
@@ -62,6 +88,30 @@
           }
           else {
             $(function () {
+
+              NCIPGlobal.namespace('repos');
+              NCIPGlobal.namespace('cache.date');
+
+              if (window.localStorage) {
+
+                if (window.localStorage.getItem('NCIPDate') === "undefined") {
+                  NCIPGlobal.cache.date = new Date().toString();
+                  console.log("Fresh NCIPDate = " + NCIPGlobal.cache.date);
+                  window.localStorage.setItem('NCIPDate',NCIPGlobal.cache.date);
+                  }
+                else {
+                  NCIPGlobal.cache.date = window.localStorage.getItem('NCIPDate');
+                  console.log("Cached NCIPDate = " + NCIPGlobal.cache.date);
+                  }
+                }
+
+              NCIPGlobal.repos = repos;
+
+              window.localStorage.setItem('NCIPrepos', repos);
+
+              console.log( 'repos in global' );
+              console.log( NCIPGlobal.repos );
+
               $("#num-repos").text(repos.length);
 
               // Convert pushed_at to Date.
