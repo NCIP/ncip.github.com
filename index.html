@@ -73,6 +73,25 @@
         $item.appendTo("#repos");
       }
 
+      function setHeader(xhr) {
+        // xhr.setRequestHeader('If-modified-since',NCIP.cache.date);
+        xhr.setRequestHeader('If-modified-since','Fri, 02 Aug 2013 13:13:41 GMT'); // while we format the NCIP.cache.date content properly...
+        }
+
+      function getJSONIfModified(uri,successFunction) {
+
+        $.ajax({
+
+          url: uri,
+          type: 'GET',
+          dataType: 'json',
+          success: successFunction,
+          beforeSend: setHeader
+
+          });
+
+        }
+
       function addRecentlyUpdatedRepos(repos, page) {
         repos = repos || [];
         page = page || 1;
@@ -81,7 +100,7 @@
                 + "&per_page=200"
                 + "&page="+page;
 
-        $.getJSON(uri, function (result) {
+        getJSONIfModified(uri, function (result) {
           if (result.data && result.data.length > 0) {
             repos = repos.concat(result.data);
             addRecentlyUpdatedRepos(repos, page + 1);
