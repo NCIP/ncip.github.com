@@ -93,25 +93,18 @@
         if (window.localStorage) {
 
           NCIPGlobal.namespace('cache.date');
-          console.log("localStorage NCIPDate = " + window.localStorage.getItem('NCIPDate'));
-
-          console.log("response headers LAST MODIFIED");
-          console.log(result.lastModified);
 
           if (window.localStorage.getItem('NCIPDate') === "undefined" || window.localStorage.getItem('NCIPDate') === null) {
             NCIPGlobal.cache.date = result.lastModified;
-            console.log("Fresh NCIPDate = " + NCIPGlobal.cache.date);
             window.localStorage.setItem('NCIPDate',NCIPGlobal.cache.date);
             }
           else {
             NCIPGlobal.cache.date = window.localStorage.getItem('NCIPDate');
-            console.log("Cached NCIPDate = " + NCIPGlobal.cache.date);
             }
           }
         }
 
       function processCachedRepositories() {
-        console.log("Processing Cached Repositories");
         var cachedRepos = window.localStorage.getItem('NCIPrepos');
         if (cachedRepos) {
           NCIPGlobal.repos = JSON.parse(cachedRepos);
