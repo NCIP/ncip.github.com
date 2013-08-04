@@ -42,7 +42,10 @@ window.NCIPGlobal = (function () {
 
           var result = {};
 
-          result.data = JSON.parse(xhr.responseText);
+          if (xhr.status===200) {
+            result.data = JSON.parse(xhr.responseText);
+            }
+
           result.status = xhr.status;
           result.lastModified = xhr.getResponseHeader('Last-Modified');
 
