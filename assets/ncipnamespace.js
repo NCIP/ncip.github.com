@@ -36,6 +36,21 @@ window.NCIPGlobal = (function () {
 
   that.getJSONIfModified = function(uri,successFunction) {
 
+    function clientSideUpdate() {
+
+        if (xhr.readyState === 4) {
+
+          var result = {};
+
+          result.data = JSON.parse(xhr.responseText);
+          result.status = xhr.status;
+          result.lastModified = xhr.getResponseHeader('Last-Modified');
+
+          successFunction(result);
+          }
+
+        }
+
     NCIPGlobal.namespace('repos');
     NCIPGlobal.namespace('cache.date');
 
@@ -43,26 +58,13 @@ window.NCIPGlobal = (function () {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function() {
-
-      if (xhr.readyState === 4) {
-
-        var result = {};
-
-        result.data = xhr.responseText;
-        result.status = xhr.status;
-        result.responseHeaders = xhr.getAllResponseHeaders();
-
-        console.log('ncipnamespace xhr result');
-        console.log(result);
-
-        successFunction(result);
-        }
-
-      }
-
     xhr.open('get',uri,true);
-    xhr.setRequestHeader('If-Modified-Since',NCIPGlobal.cache.date);
+
+    xhr.onreadystatechange = clientSideUpdate;
+
+    if (NCIPGlobal.cache.date) {
+      // xhr.setRequestHeader('If-Modified-Since',NCIPGlobal.cache.date);
+      }
 
     xhr.send(null);
 
