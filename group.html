@@ -12,6 +12,7 @@
     <script type="text/javascript" src="ncip-repo.json"></script>
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
+    <script type="text/javascript" src="assets/ncipnamespace.js"></script>
     <script type="text/javascript">
     (function ($, undefined) {
 
@@ -21,16 +22,14 @@
         "missing2": "http://ncip.github.com/missing2/"
       };
 
-      var NCIPGlobal = NCIPGlobal || {};
+      var NCIPGlobal = window.NCIPGlobal;
+
+      NCIPGlobal.namespace('repos');
+      NCIPGlobal.namespace('cache.date');
 
       var potentialRepos = window.localStorage.getItem('NCIPrepos');
 
       console.log("NCIPDate =" + window.localStorage.getItem('NCIPDate'));
-
-      if (potentialRepos) {
-        console.log( 'repos in localStorage' );
-        console.log( potentialRepos );
-        }
 
 
       function urlQueryString(key) {
@@ -59,8 +58,6 @@
       function repoDescription(repo) {
         return repoDescriptions[repo.name] || repo.description;
       }
-
-
 
       function addRepo(repo) {
         var $item = $("<li>").addClass("repo grid-1 " + repo.category);
@@ -176,7 +173,7 @@
                 + "&per_page=100"
                 + "&page="+page;
 
-        $.getJSON(uri, function (result) {
+        NCIPGlobal.getJSONIfModified(uri, function (result) {
           if (result.data && result.data.length > 0) {
             repos = repos.concat(result.data);
             getReposFromGithub(repos, page + 1);
