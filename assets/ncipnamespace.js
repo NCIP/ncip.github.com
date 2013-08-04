@@ -43,20 +43,29 @@ window.NCIPGlobal = (function () {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('get',uri,false);
+    xhr.onreadystatechange = function() {
+
+      if (xhr.readyState === 4) {
+
+        var result = {};
+
+        result.data = xhr.responseText;
+        result.status = xhr.status;
+        result.responseHeaders = xhr.getAllResponseHeaders();
+
+        console.log('ncipnamespace xhr result');
+        console.log(result);
+
+        successFunction(result);
+        }
+
+      }
+
+    xhr.open('get',uri,true);
     xhr.setRequestHeader('If-Modified-Since',NCIPGlobal.cache.date);
+
     xhr.send(null);
 
-    var result = {};
-
-    result.data = xhr.responseText;
-    result.status = xhr.status;
-    result.responseHeaders = xhr.getAllResponseHeaders();
-
-    console.log('xhr result');
-    console.log(result);
-
-    successFunction(result);
     };
 
   return that;
