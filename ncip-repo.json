@@ -443,22 +443,22 @@ var ncip_repos = [
   },
   {
     "name": "caadapter",
-    "group": "No group tags"
+    "group": "Additional repositories"
   },
   {
     "name": "cananolab",
-    "group": "No group tags"
+    "group": "Additional repositories"
   },
   {
     "name": "ISAvalidator-ISAconverter-Bllmanager",
-    "group": "No group tags"
+    "group": "Additional repositories"
   },
   {
     "name": "ISAValidatorWS",
-    "group": "No group tags"
+    "group": "Additional repositories"
   },
   {
     "name": "digital-model-repository",
-    "group": "No group tags"
+    "group": "Additional repositories"
   },
 ];
