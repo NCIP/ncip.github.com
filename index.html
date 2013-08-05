@@ -12,10 +12,18 @@
     <script type="text/javascript" src="ncip-repo.json"></script>
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
+    <script type="text/javascript" src="assets/ncipnamespace.js"></script>
     <script type="text/javascript">
     (function ($, undefined) {
 
       var homePageURL = "http://localhost:8000/"; // http://ncip.github.io/
+
+      var NCIPGlobal = window.NCIPGlobal;
+
+      NCIPGlobal.namespace('cache.repos');
+      NCIPGlobal.namespace('cache.reposDate');
+      NCIPGlobal.namespace('cache.members');
+      NCIPGlobal.namespace('cache.membersDate');
 
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
@@ -48,43 +56,105 @@
       }
 
       function addRecentlyUpdatedRepos(repos, page) {
+
         repos = repos || [];
         page = page || 1;
 
-        var uri = "https://api.github.com/orgs/ncip/repos?callback=?"
+        var uri = "https://api.github.com/orgs/ncip/repos?"
                 + "&per_page=100"
                 + "&page="+page;
 
-        $.getJSON(uri, function (result) {
-          if (result.data && result.data.length > 0) {
-            repos = repos.concat(result.data);
-            addRecentlyUpdatedRepos(repos, page + 1);
+        var since = null;
+
+        if (window.localStorage) {
+          NCIPGlobal.cache.reposDate = window.localStorage.getItem('NCIPDate');
+          since = NCIPGlobal.cache.reposDate;
           }
-          else {
-            $(function () {
-              $("#num-repos").text(repos.length);
 
-              // Convert pushed_at to Date.
-              $.each(repos, function (i, repo) {
-                repo.pushed_at = new Date(repo.pushed_at);
-              });
+        NCIPGlobal.getJSONIfModified(uri,since, function (result) {
 
-              // Sort by most-recently pushed to.
-              repos.sort(function (a, b) {
-                if (a.pushed_at < b.pushed_at) return 1;
-                if (b.pushed_at < a.pushed_at) return -1;
-                return 0;
-              });
+          if ( result.status === 403 ) { // Refused
+            repos = NCIPGlobal.getCachedRepositories();
+            processRepositories(repos);
+            }
 
-              $.each(repos.slice(0, 3), function (i, repo) {
-                addRecentlyUpdatedRepo(repo);
-              });
+          if ( result.status === 304 ) { // Not Modified
+            repos = NCIPGlobal.getCachedRepositories();
+            processRepositories(repos);
+            }
 
-            });
+          if ( result.status === 200 ) { // OK Status
+
+            if (result.data && result.data.length > 0) {
+              repos = repos.concat(result.data);
+              addRecentlyUpdatedRepos(repos, page + 1);
+              if (page === 1) {
+                storeLastReposChangeDateInCache(result);
+                }
+              }
+            else {
+              NCIPGlobal.cache.repos = JSON.stringify(repos);
+              window.localStorage.setItem('NCIPrepos',NCIPGlobal.cache.repos);
+              processRepositories(repos);
+              }
           }
+
         });
       }
       addRecentlyUpdatedRepos();
+
+      function storeLastReposChangeDateInCache(result) {
+        if (window.localStorage) {
+
+          if (window.localStorage.getItem('NCIPDate') === "undefined" || window.localStorage.getItem('NCIPDate') === null) {
+            NCIPGlobal.cache.reposDate = result.lastModified;
+            window.localStorage.setItem('NCIPDate',NCIPGlobal.cache.reposDate);
+            }
+          else {
+            NCIPGlobal.cache.reposDate = window.localStorage.getItem('NCIPDate');
+            }
+          }
+        }
+
+      function storeLastMembersChangeDateInCache(result) {
+        if (window.localStorage) {
+
+          if (window.localStorage.getItem('NCIPDate2') === "undefined" || window.localStorage.getItem('NCIPDate2') === null) {
+            NCIPGlobal.cache.membersDate = result.lastModified;
+            window.localStorage.setItem('NCIPDate2',NCIPGlobal.cache.membersDate);
+            }
+          else {
+            NCIPGlobal.cache.membersDate = window.localStorage.getItem('NCIPDate2');
+            }
+          }
+        }
+
+
+      function processRepositories(repos) {
+
+          $(function () {
+
+            $("#num-repos").text(repos.length);
+
+            // Convert pushed_at to Date.
+            $.each(repos, function (i, repo) {
+              repo.pushed_at = new Date(repo.pushed_at);
+            });
+
+            // Sort by most-recently pushed to.
+            repos.sort(function (a, b) {
+              if (a.pushed_at < b.pushed_at) return 1;
+              if (b.pushed_at < a.pushed_at) return -1;
+              return 0;
+            });
+
+            $.each(repos.slice(0, 3), function (i, repo) {
+              addRecentlyUpdatedRepo(repo);
+            });
+
+          });
+
+        }
 
       function addGroups(repoGroups) {
         var repoGroups = ncip_groups;
@@ -98,13 +168,40 @@
       }
       addGroups();
 
-      $.getJSON("https://api.github.com/orgs/ncip/members?callback=?", function (result) {
-        var members = result.data;
+      var since = null;
 
-        $(function () {
-          $("#num-members").text(members.length);
-        });
+      if (window.localStorage) {
+        NCIPGlobal.cache.membersDate = window.localStorage.getItem('NCIPDate2');
+        since = NCIPGlobal.cache.membersDate;
+        }
+
+      NCIPGlobal.getJSONIfModified("https://api.github.com/orgs/ncip/members", since, function (result) {
+
+        if ( result.status === 403 ) { // Refused
+          var members = NCIPGlobal.getCachedMembers();
+          processMembers(members);
+          }
+
+        if ( result.status === 304 ) { // Not Modified
+          var members = NCIPGlobal.getCachedMembers();
+          processMembers(members);
+          }
+
+        if ( result.status === 200 ) { // OK Status
+          var members = result.data;
+          NCIPGlobal.cache.members = JSON.stringify(members);
+          window.localStorage.setItem('NCIPmembers',NCIPGlobal.cache.members);
+          processMembers(members);
+          storeLastMembersChangeDateInCache(result);
+        }
+
       });
+
+      function processMembers(members) {
+          $(function () {
+            $("#num-members").text(members.length);
+          });
+        }
 
     })(jQuery);
     </script>
