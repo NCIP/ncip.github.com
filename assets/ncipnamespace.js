@@ -34,7 +34,7 @@ window.NCIPGlobal = (function () {
 
     };
 
-  that.getJSONIfModified = function(uri,successFunction) {
+  that.getJSONIfModified = function(uri,sinceDate,successFunction) {
 
     function clientSideUpdate() {
 
@@ -54,10 +54,10 @@ window.NCIPGlobal = (function () {
 
         }
 
-    NCIPGlobal.namespace('repos');
-    NCIPGlobal.namespace('cache.date');
-
-    NCIPGlobal.cache.date = window.localStorage.getItem('NCIPDate');
+    NCIPGlobal.namespace('cache.repos');
+    NCIPGlobal.namespace('cache.reposDate');
+    NCIPGlobal.namespace('cache.members');
+    NCIPGlobal.namespace('cache.membersDate');
 
     var xhr = new XMLHttpRequest();
 
@@ -65,21 +65,34 @@ window.NCIPGlobal = (function () {
 
     xhr.onreadystatechange = clientSideUpdate;
 
-    if (NCIPGlobal.cache.date) {
-      xhr.setRequestHeader('If-Modified-Since',NCIPGlobal.cache.date);
+    if (sinceDate) {
+      console.log("sinceDate: " + sinceDate);
+      xhr.setRequestHeader('If-Modified-Since',sinceDate);
       }
 
+    console.log("XMLHttpRequest");
     xhr.send(null);
 
     };
 
-
   that.getCachedRepositories = function() {
     var cachedRepos = window.localStorage.getItem('NCIPrepos');
     if (cachedRepos) {
-      NCIPGlobal.repos = JSON.parse(cachedRepos);
-      repos = NCIPGlobal.repos;
+      NCIPGlobal.cache.repos = JSON.parse(cachedRepos);
+      var repos = NCIPGlobal.cache.repos;
+      console.log("RECOVERING REPOS FROM CACHE");
       return repos;
+      }
+    return null;
+    };
+
+  that.getCachedMembers = function() {
+    var cachedMembers = window.localStorage.getItem('NCIPmembers');
+    if (cachedMembers) {
+      NCIPGlobal.cache.members = JSON.parse(cachedMembers);
+      var members = NCIPGlobal.cache.members;
+      console.log("RECOVERING MEMBERS FROM CACHE");
+      return members;
       }
     return null;
     };

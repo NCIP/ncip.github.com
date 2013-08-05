@@ -24,8 +24,10 @@
 
       var NCIPGlobal = window.NCIPGlobal;
 
-      NCIPGlobal.namespace('repos');
-      NCIPGlobal.namespace('cache.date');
+      NCIPGlobal.namespace('cache.repos');
+      NCIPGlobal.namespace('cache.reposDate');
+      NCIPGlobal.namespace('cache.members');
+      NCIPGlobal.namespace('cache.membersDate');
 
       var potentialRepos = window.localStorage.getItem('NCIPrepos');
 
@@ -173,7 +175,14 @@
                 + "&per_page=100"
                 + "&page="+page;
 
-        NCIPGlobal.getJSONIfModified(uri, function (result) {
+        var since = null;
+
+        if (window.localStorage) {
+          NCIPGlobal.cache.reposDate = window.localStorage.getItem('NCIPDate');
+          since = NCIPGlobal.cache.reposDate;
+          }
+
+        NCIPGlobal.getJSONIfModified(uri, since, function (result) {
 
           if ( result.status === 403 ) { // Refused
             repos = NCIPGlobal.getCachedRepositories();
@@ -232,13 +241,39 @@
           addReposFromGroup(reposInGroup);
         }
 
-      $.getJSON("https://api.github.com/orgs/ncip/members?callback=?", function (result) {
-        var members = result.data;
+      var since = null;
 
-        $(function () {
-          $("#num-members").text(members.length);
-        });
+      if (window.localStorage) {
+        NCIPGlobal.cache.membersDate = window.localStorage.getItem('NCIPDate2');
+        since = NCIPGlobal.cache.membersDate;
+        }
+
+      NCIPGlobal.getJSONIfModified("https://api.github.com/orgs/ncip/members", since, function (result) {
+
+        if ( result.status === 403 ) { // Refused
+          var members = NCIPGlobal.getCachedMembers();
+          processMembers(members);
+          }
+
+        if ( result.status === 304 ) { // Not Modified
+          var members = NCIPGlobal.getCachedMembers();
+          processMembers(members);
+          }
+
+        if ( result.status === 200 ) { // OK Status
+          var members = result.data;
+          NCIPGlobal.cache.members = JSON.stringify(members);
+          window.localStorage.setItem('NCIPmembers',NCIPGlobal.cache.members);
+          processMembers(members);
+        }
+
       });
+
+      function processMembers(members) {
+          $(function () {
+            $("#num-members").text(members.length);
+          });
+        }
 
     })(jQuery);
     </script>
