@@ -66,11 +66,9 @@ window.NCIPGlobal = (function () {
     xhr.onreadystatechange = clientSideUpdate;
 
     if (sinceDate) {
-      console.log("sinceDate: " + sinceDate);
       xhr.setRequestHeader('If-Modified-Since',sinceDate);
       }
 
-    console.log("XMLHttpRequest");
     xhr.send(null);
 
     };
@@ -80,7 +78,6 @@ window.NCIPGlobal = (function () {
     if (cachedRepos) {
       NCIPGlobal.cache.repos = JSON.parse(cachedRepos);
       var repos = NCIPGlobal.cache.repos;
-      console.log("RECOVERING REPOS FROM CACHE");
       return repos;
       }
     return null;
@@ -91,7 +88,6 @@ window.NCIPGlobal = (function () {
     if (cachedMembers) {
       NCIPGlobal.cache.members = JSON.parse(cachedMembers);
       var members = NCIPGlobal.cache.members;
-      console.log("RECOVERING MEMBERS FROM CACHE");
       return members;
       }
     return null;
