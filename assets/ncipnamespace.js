@@ -66,11 +66,22 @@ window.NCIPGlobal = (function () {
     xhr.onreadystatechange = clientSideUpdate;
 
     if (NCIPGlobal.cache.date) {
-      // xhr.setRequestHeader('If-Modified-Since',NCIPGlobal.cache.date);
+      xhr.setRequestHeader('If-Modified-Since',NCIPGlobal.cache.date);
       }
 
     xhr.send(null);
 
+    };
+
+
+  that.getCachedRepositories = function() {
+    var cachedRepos = window.localStorage.getItem('NCIPrepos');
+    if (cachedRepos) {
+      NCIPGlobal.repos = JSON.parse(cachedRepos);
+      repos = NCIPGlobal.repos;
+      return repos;
+      }
+    return null;
     };
 
   return that;

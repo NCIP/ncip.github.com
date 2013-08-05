@@ -62,11 +62,13 @@
         NCIPGlobal.getJSONIfModified(uri, function (result) {
 
           if ( result.status === 403 ) { // Refused
-            processCachedRepositories();
+            repos = NCIPGlobal.getCachedRepositories();
+            processRepositories(repos);
             }
 
           if ( result.status === 304 ) { // Not Modified
-            processCachedRepositories();
+            repos = NCIPGlobal.getCachedRepositories();
+            processRepositories(repos);
             }
 
           if ( result.status === 200 ) { // OK Status
@@ -101,15 +103,6 @@
           else {
             NCIPGlobal.cache.date = window.localStorage.getItem('NCIPDate');
             }
-          }
-        }
-
-      function processCachedRepositories() {
-        var cachedRepos = window.localStorage.getItem('NCIPrepos');
-        if (cachedRepos) {
-          NCIPGlobal.repos = JSON.parse(cachedRepos);
-          repos = NCIPGlobal.repos;
-          processRepositories(repos);
           }
         }
 
