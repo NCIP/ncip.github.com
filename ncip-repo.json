@@ -296,18 +296,6 @@ var ncip_repos = [
     "group": "caTissue"
   },
   {
-    "name": "cgmdr",
-    "group": "cgMDR"
-  },
-  {
-    "name": "cgmdr-nci-uk",
-    "group": "cgMDR"
-  },
-  {
-    "name": "mdr",
-    "group": "cgMDR"
-  },
-  {
     "name": "caarray",
     "group": "Microarray Tools"
   },
