@@ -140,6 +140,14 @@ var ncip_repos = [
     "group": "caDSR"
   },
   {
+    "name": "cadsr-cgmdr-nci-uk",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-cgmdr",
+    "group": "caDSR"
+  },
+  {
     "name": "edct-cadsr-api-server",
     "group": "caDSR"
   },
