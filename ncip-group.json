@@ -30,11 +30,6 @@ var ncip_groups = [
     "category":"translational"
   },
   {
-    "name":"cgMDR",
-    "description":"cgMDR (Cancer Grid Metadata Repository) provides a framework for supporting a light weighte ISO 11179 stadards metadata repository",
-    "category":"semantics"
-  },
-  {
     "name":"Microarray Tools",
     "description":"Tools to support the management and analysis of microarray data",
     "category":"biology"
