@@ -96,6 +96,14 @@ var ncip_repos = [
     "group": "EVS"
   },
   {
+    "name": "lexevs-service",
+    "group": "EVS"
+  },
+  {
+    "name": "URI_Resolver",
+    "group": "EVS"
+  },
+  {
     "name": "nci-mapping-tool",
     "group": "EVS"
   },
@@ -345,6 +353,10 @@ var ncip_repos = [
   },
   {
     "name": "labviewer",
+    "group": "Clinical Trials"
+  },
+  {
+    "name": "nci-ocr",
     "group": "Clinical Trials"
   },
   {
