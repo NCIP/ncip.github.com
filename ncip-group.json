@@ -35,6 +35,11 @@ var ncip_groups = [
     "category":"biology"
   },
   {
+    "name":"Next-gen sequencing",
+    "description":"Tools to support the management and analysis of microarray data",
+    "category":"biology"
+  },
+  {
     "name":"Clinical Trials",
     "description":"Tools to support clinical trials data collection and management",
     "category":"translational"
