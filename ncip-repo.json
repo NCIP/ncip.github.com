@@ -392,6 +392,10 @@ var ncip_repos = [
     "group": "Microarray Tools"
   },
   {
+    "name": "cgr-bambino",
+    "group": "Next-gen sequencing"
+  },
+  {
     "name": "c3pr",
     "group": "Clinical Trials"
   },
