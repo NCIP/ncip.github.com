@@ -36,7 +36,7 @@ var ncip_groups = [
   },
   {
     "name":"Next-gen sequencing",
-    "description":"Tools to support the management and analysis of microarray data",
+    "description":"Tools to support the management and analysis of next-gen sequencing data",
     "category":"biology"
   },
   {
