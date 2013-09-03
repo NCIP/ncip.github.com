@@ -376,6 +376,10 @@ var ncip_repos = [
     "group": "Microarray Tools"
   },
   {
+    "name": "cgr-bambino",
+    "group": "Microarray Tools"
+  },
+  {
     "name": "dwd",
     "group": "Microarray Tools"
   },
