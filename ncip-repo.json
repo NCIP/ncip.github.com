@@ -148,6 +148,42 @@ var ncip_repos = [
     "group": "caDSR"
   },
   {
+    "name": "cadsr-password-change",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-cde-browser",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-cdecurate",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-objectcart",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-semantic-tools",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-sentinal",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-admin-tool",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-api",
+    "group": "caDSR"
+  },
+  {
+    "name": "cadsr-formbuilder",
+    "group": "caDSR"
+  },
+  {
     "name": "cadsr-cgmdr-nci-uk",
     "group": "caDSR"
   },
@@ -241,6 +277,30 @@ var ncip_repos = [
   },
   {
     "name": "catissue-dao",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-print-service",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-core",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-docs",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-test",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-tools",
+    "group": "caTissue"
+  },
+  {
+    "name": "catissue-dynamic-extensions",
     "group": "caTissue"
   },
   {
