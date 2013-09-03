@@ -522,6 +522,10 @@ var ncip_repos = [
     "group": "Additional repositories"
   },
   {
+    "name": "test",
+    "group": "Additional repositories"
+  },
+  {
     "name": "ISAValidatorWS",
     "group": "Additional repositories"
   },
