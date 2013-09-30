@@ -1,540 +1,594 @@
 var ncip_repos = [
   {
-    "name": "cagrid",
+    "full_name": "NCIP/cagrid",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-docs",
+    "full_name": "NCIP/cagrid-docs",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-core",
+    "full_name": "NCIP/cagrid-core",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-grid-incubation",
+    "full_name": "NCIP/cagrid-grid-incubation",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-general",
+    "full_name": "NCIP/cagrid-general",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-portal",
+    "full_name": "NCIP/cagrid-portal",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-workflow",
+    "full_name": "NCIP/cagrid-workflow",
     "group": "caGrid"
   },
   {
-    "name": "taverna-grid",
+    "full_name": "NCIP/taverna-grid",
     "group": "caGrid"
   },
   {
-    "name": "cab2b",
+    "full_name": "NCIP/cab2b",
     "group": "caGrid"
   },
   {
-    "name": "cagrid-iphone-app",
+    "full_name": "NCIP/cagrid-iphone-app",
     "group": "caGrid"
   },
   {
-    "name": "catrip",
+    "full_name": "NCIP/catrip",
     "group": "caGrid"
   },
   {
-    "name": "caobr",
+    "full_name": "NCIP/caobr",
     "group": "caGrid"
   },
   {
-    "name": "cagrid2-wsrf",
+    "full_name": "NCIP/cagrid2-wsrf",
     "group": "caGrid"
   },
   {
-    "name": "cagrid2",
+    "full_name": "NCIP/cagrid2",
     "group": "caGrid"
   },
   {
-    "name": "cacore-sdk",
+    "full_name": "NCIP/cacore-sdk",
     "group": "caCORE"
   },
   {
-    "name": "cacore-sdk-docs",
+    "full_name": "NCIP/cacore-sdk-docs",
     "group": "caCORE"
   },
   {
-    "name": "common-security-module",
+    "full_name": "NCIP/common-security-module",
     "group": "caCORE"
   },
   {
-    "name": "common-security-module-docs",
+    "full_name": "NCIP/common-security-module-docs",
     "group": "caCORE"
   },
   {
-    "name": "common-logging-module",
+    "full_name": "NCIP/common-logging-module",
     "group": "caCORE"
   },
   {
-    "name": "iso21090",
+    "full_name": "NCIP/iso21090",
     "group": "caCORE"
   },
   {
-    "name": "xmihandler",
+    "full_name": "NCIP/xmihandler",
     "group": "caCORE"
   },
   {
-    "name": "cacore-sdk-pre411",
+    "full_name": "NCIP/cacore-sdk-pre411",
     "group": "caCORE"
   },
   {
-    "name": "python-api",
+    "full_name": "NCIP/python-api",
     "group": "caCORE"
   },
   {
-    "name": "nci-value-set-editor",
+    "full_name": "NCIP/nci-value-set-editor",
     "group": "EVS"
   },
   {
-    "name": "lexevs-service",
+    "full_name": "NCIP/lexevs-service",
     "group": "EVS"
   },
   {
-    "name": "URI_Resolver",
+    "full_name": "NCIP/URI_Resolver",
     "group": "EVS"
   },
   {
-    "name": "nci-mapping-tool",
+    "full_name": "NCIP/nci-mapping-tool",
     "group": "EVS"
   },
   {
-    "name": "nci-report-writer",
+    "full_name": "NCIP/nci-report-writer",
     "group": "EVS"
   },
   {
-    "name": "nci-metathesaurus-browser",
+    "full_name": "NCIP/nci-metathesaurus-browser",
     "group": "EVS"
   },
   {
-    "name": "nci-term-browser",
+    "full_name": "NCIP/nci-term-browser",
     "group": "EVS"
   },
   {
-    "name": "nci-term-suggestion",
+    "full_name": "NCIP/nci-term-suggestion",
     "group": "EVS"
   },
   {
-    "name": "lexevs",
+    "full_name": "NCIP/lexevs",
     "group": "EVS"
   }, 
   {
-    "name": "lexevs-grid",
+    "full_name": "NCIP/lexevs-grid",
     "group": "EVS"
   }, 
   {
-    "name": "lexevs-remote",
+    "full_name": "NCIP/lexevs-remote",
     "group": "EVS"
   }, 
   {
-    "name": "edct-common",
+    "full_name": "NCIP/edct-common",
     "group": "caDSR"
   },
   {
-    "name": "edct-collector",
+    "full_name": "NCIP/edct-collector",
     "group": "caDSR"
   },
   {
-    "name": "edct-analytics",
+    "full_name": "NCIP/edct-analytics",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-password-change",
+    "full_name": "NCIP/cadsr-password-change",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-cde-browser",
+    "full_name": "NCIP/cadsr-cde-browser",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-cdecurate",
+    "full_name": "NCIP/cadsr-cdecurate",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-objectcart",
+    "full_name": "NCIP/cadsr-objectcart",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-semantic-tools",
+    "full_name": "NCIP/cadsr-semantic-tools",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-sentinal",
+    "full_name": "NCIP/cadsr-sentinal",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-admin-tool",
+    "full_name": "NCIP/cadsr-admin-tool",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-api",
+    "full_name": "NCIP/cadsr-api",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-formbuilder",
+    "full_name": "NCIP/cadsr-formbuilder",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-cgmdr-nci-uk",
+    "full_name": "NCIP/cadsr-cgmdr-nci-uk",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-cgmdr",
+    "full_name": "NCIP/cadsr-cgmdr",
     "group": "caDSR"
   },
   {
-    "name": "edct-cadsr-api-server",
+    "full_name": "NCIP/edct-cadsr-api-server",
     "group": "caDSR"
   },
   {
-    "name": "edct-formbuilder",
+    "full_name": "NCIP/edct-formbuilder",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-bulk-loader",
+    "full_name": "NCIP/cadsr-bulk-loader",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-grid-dataservice",
+    "full_name": "NCIP/cadsr-grid-dataservice",
     "group": "caDSR"
   },
   {
-    "name": "cadsr-uml-model-browser",
+    "full_name": "NCIP/cadsr-uml-model-browser",
     "group": "caDSR"
   },
   {
-    "name": "caintegrator",
+    "full_name": "NCIP/caintegrator",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "stats-analysis-server",
+    "full_name": "NCIP/stats-analysis-server",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "stats-analysis",
+    "full_name": "NCIP/stats-analysis",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "stats-analysis-commons",
+    "full_name": "NCIP/stats-analysis-commons",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "cagwas",
+    "full_name": "NCIP/cagwas",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "caintegrator-docs",
+    "full_name": "NCIP/caintegrator-docs",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "caintegrator-data",
+    "full_name": "NCIP/caintegrator-data",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "stats-application-commons",
+    "full_name": "NCIP/stats-application-commons",
     "group": "caIntegrator Portals"
   }, 
   {
-    "name": "i-spy",
+    "full_name": "NCIP/i-spy",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "cma",
+    "full_name": "NCIP/cma",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "eagle",
+    "full_name": "NCIP/eagle",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "webgenome",
+    "full_name": "NCIP/webgenome",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "webgenome-integration",
+    "full_name": "NCIP/webgenome-integration",
     "group": "caIntegrator Portals"
   },
   {
-    "name": "catissue-advanced-query",
+    "full_name": "NCIP/catissue-advanced-query",
     "group": "caTissue"
   },
   {
-    "name": "catissue-cacore-sdk",
+    "full_name": "NCIP/catissue-cacore-sdk",
     "group": "caTissue"
   },
   {
-    "name": "catissue-CAS",
+    "full_name": "NCIP/catissue-CAS",
     "group": "caTissue"
   },
   {
-    "name": "catissue-dao",
+    "full_name": "NCIP/catissue-dao",
     "group": "caTissue"
   },
   {
-    "name": "catissue-print-service",
+    "full_name": "NCIP/catissue-print-service",
     "group": "caTissue"
   },
   {
-    "name": "catissue-core",
+    "full_name": "NCIP/catissue-core",
     "group": "caTissue"
   },
   {
-    "name": "catissue-docs",
+    "full_name": "NCIP/catissue-docs",
     "group": "caTissue"
   },
   {
-    "name": "catissue-test",
+    "full_name": "NCIP/catissue-test",
     "group": "caTissue"
   },
   {
-    "name": "catissue-tools",
+    "full_name": "NCIP/catissue-tools",
     "group": "caTissue"
   },
   {
-    "name": "catissue-dynamic-extensions",
+    "full_name": "NCIP/catissue-dynamic-extensions",
     "group": "caTissue"
   },
   {
-    "name": "catissue-idp-authentication-manager",
+    "full_name": "NCIP/catissue-idp-authentication-manager",
     "group": "caTissue"
   },
   {
-    "name": "catissue-migration-tool",
+    "full_name": "NCIP/catissue-migration-tool",
     "group": "caTissue"
   },
   {
-    "name": "catissue-participant-manager",
+    "full_name": "NCIP/catissue-participant-manager",
     "group": "caTissue"
   },
   {
-    "name": "catissue-security-manager",
+    "full_name": "NCIP/catissue-security-manager",
     "group": "caTissue"
   },
   {
-    "name": "catissue-simple-query",
+    "full_name": "NCIP/catissue-simple-query",
     "group": "caTissue"
   },
   {
-    "name": "catissue-utilities",
+    "full_name": "NCIP/catissue-utilities",
     "group": "caTissue"
   },
   {
-    "name": "commons-module",
+    "full_name": "NCIP/commons-module",
     "group": "caTissue"
   },
   {
-    "name": "metadata-based-query",
+    "full_name": "NCIP/metadata-based-query",
     "group": "caTissue"
   },
   {
-    "name": "tmt-catissue",
+    "full_name": "NCIP/tmt-catissue",
     "group": "caTissue"
   },
   {
-    "name": "keyword-search",
+    "full_name": "NCIP/keyword-search",
     "group": "caTissue"
   },
   {
-    "name": "query-module",
+    "full_name": "NCIP/query-module",
     "group": "caTissue"
   },
   {
-    "name": "security-module",
+    "full_name": "NCIP/security-module",
     "group": "caTissue"
   },
   {
-    "name": "wustl-common-package",
+    "full_name": "NCIP/wustl-common-package",
     "group": "caTissue"
   },
   {
-    "name": "wustl-common-utilities",
+    "full_name": "NCIP/wustl-common-utilities",
     "group": "caTissue"
   },
   {
-    "name": "gsid",
+    "full_name": "NCIP/gsid",
     "group": "caTissue"
   },
   {
-    "name": "caarray",
+    "full_name": "NCIP/caarray",
     "group": "Microarray Tools"
   },
   {
-    "name": "caarray-docs",
+    "full_name": "NCIP/caarray-docs",
     "group": "Microarray Tools"
   },
   {
-    "name": "bioconductor",
+    "full_name": "NCIP/bioconductor",
     "group": "Microarray Tools"
   },
   {
-    "name": "cgr-bambino",
+    "full_name": "NCIP/cgr-bambino",
     "group": "Microarray Tools"
   },
   {
-    "name": "dwd",
+    "full_name": "NCIP/dwd",
     "group": "Microarray Tools"
   },
   {
-    "name": "visda",
+    "full_name": "NCIP/visda",
     "group": "Microarray Tools"
   },
   {
-    "name": "calims",
+    "full_name": "NCIP/calims",
     "group": "Microarray Tools"
   },
   {
-    "name": "cgr-bambino",
+    "full_name": "NCIP/cgr-bambino",
     "group": "Next-gen sequencing"
   },
   {
-    "name": "c3pr",
+    "full_name": "NCIP/c3pr",
     "group": "Clinical Trials"
   },
   {
-    "name": "c3pr-docs",
+    "full_name": "NCIP/c3pr-docs",
     "group": "Clinical Trials"
   },
   {
-    "name": "psc",
+    "full_name": "NCIP/psc",
     "group": "Clinical Trials"
   },
   {
-    "name": "psc-docs",
+    "full_name": "NCIP/psc-docs",
     "group": "Clinical Trials"
   },
   {
-    "name": "caaers",
+    "full_name": "NCIP/caaers",
     "group": "Clinical Trials"
   },
   {
-    "name": "caaers-docs",
+    "full_name": "NCIP/caaers-docs",
     "group": "Clinical Trials"
   },
   {
-    "name": "labviewer",
+    "full_name": "NCIP/labviewer",
     "group": "Clinical Trials"
   },
   {
-    "name": "nci-ocr",
+    "full_name": "NCIP/nci-ocr",
     "group": "Clinical Trials"
   },
   {
-    "name": "labviewer-docs",
+    "full_name": "NCIP/labviewer-docs",
     "group": "Clinical Trials"
   },
   {
-    "name": "cacis",
+    "full_name": "NCIP/cacis",
     "group": "Clinical Trials"
   },
   {
-    "name": "cacis-docs",
+    "full_name": "NCIP/cacis-docs",
     "group": "Clinical Trials"
   },
   {
-    "name": "ihub",
+    "full_name": "NCIP/ihub",
     "group": "Clinical Trials"
   },
   {
-    "name": "ctms-commons",
+    "full_name": "NCIP/ctms-commons",
     "group": "Clinical Trials"
   },
   {
-    "name": "clinical-connector",
+    "full_name": "NCIP/clinical-connector",
     "group": "Clinical Trials"
   },
   {
-    "name": "national-biomedical-image-archive",
+    "full_name": "NCIP/national-biomedical-image-archive",
     "group": "In vivo imaging"
   },
   {
-    "name": "invivo-imaging-middleware",
+    "full_name": "NCIP/invivo-imaging-middleware",
     "group": "In vivo imaging"
   },
   {
-    "name": "annotation-and-image-markup",
+    "full_name": "NCIP/annotation-and-image-markup",
     "group": "In vivo imaging"
   },
   {
-    "name": "xip",
-    "group": "In vivo imaging",
-    "channel": "OpenXIP"
-  },
-  {
-    "name": "avt",
-    "group": "In vivo imaging",
-    "channel": "OpenXIP"
-  },
-  {
-    "name": "pathway-interaction-database",
+    "full_name": "NCIP/pathway-interaction-database",
     "group": "Proteomics"
   },
   {
-    "name": "prot-express",
+    "full_name": "NCIP/prot-express",
     "group": "Proteomics"
   },
   {
-    "name": "qfive",
+    "full_name": "NCIP/qfive",
     "group": "Proteomics"
   },
   {
-    "name": "cabio",
+    "full_name": "NCIP/cabio",
     "group": "Genomic annotation"
   },
   {
-    "name": "geneconnect",
+    "full_name": "NCIP/geneconnect",
     "group": "Genomic annotation"
   },
   {
-    "name": "camod",
+    "full_name": "NCIP/camod",
     "group": "Animal models"
   },
   {
-    "name": "camod-docs",
+    "full_name": "NCIP/camod-docs",
     "group": "Animal models"
   },
   {
-    "name": "caelmir",
+    "full_name": "NCIP/caelmir",
     "group": "Animal models"
   },
   {
-    "name": "caimage",
+    "full_name": "NCIP/caimage",
     "group": "Tissue banking and histopathology"
   },
   {
-    "name": "quality-indicator-portal",
+    "full_name": "NCIP/quality-indicator-portal",
     "group": "Tissue banking and histopathology"
   },
   {
-    "name": "common-biorepository-model",
+    "full_name": "NCIP/common-biorepository-model",
     "group": "Tissue banking and histopathology"
   },
   {
-    "name": "caadapter",
+    "full_name": "NCIP/caadapter",
     "group": "Additional repositories"
   },
   {
-    "name": "cananolab",
+    "full_name": "NCIP/cananolab",
     "group": "Additional repositories"
   },
   {
-    "name": "ISAvalidator-ISAconverter-Bllmanager",
+    "full_name": "NCIP/ISAvalidator-ISAconverter-Bllmanager",
     "group": "Additional repositories"
   },
   {
-    "name": "ISAValidatorWS",
+    "full_name": "NCIP/ISAValidatorWS",
     "group": "Additional repositories"
   },
   {
-    "name": "digital-model-repository",
+    "full_name": "NCIP/digital-model-repository",
     "group": "Additional repositories"
+  },
+  {
+    "full_name": "OpenXIP/xip-host",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/xip-app-cmdExec",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/xip-app-tutorial",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/xip-host-service",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/xip-app",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/old-docs",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/xip-libraries",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-vasari",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-util",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-mvt",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-ia",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-ae",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-ad-install",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-ad-core",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/master-build",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "OpenXIP/avt-ad-api",
+    "group": "OpenXIP"
   },
 ];

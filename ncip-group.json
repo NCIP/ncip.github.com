@@ -70,6 +70,11 @@ var ncip_groups = [
     "category":"translational"
   },
   {
+    "name":"OpenXIP",
+    "description":"Environment for rapidly developing medical imaging applications from an extensible set of modular elements",
+    "category":"translational"
+  },
+  {
     "name":"Additional repositories",
     "description":"Repositories that are not categorized into the existing groups"
   },

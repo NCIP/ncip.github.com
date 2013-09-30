@@ -13,14 +13,16 @@
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
     <script type="text/javascript" src="assets/ncipnamespace.js"></script>
+
+    <script>
+      var browserIsIELessThan10 = false;
+      if ($.browser.msie && parseInt($.browser.version, 10) < 10){
+        browserIsIELessThan10 = true;
+        }
+    </script>
+
     <script type="text/javascript">
     (function ($, undefined) {
-
-      // Put custom repo URL's in this object, keyed by repo name.
-      var repoUrls = {
-        "missing1": "http://ncip.github.com/missing1/",
-        "missing2": "http://ncip.github.com/missing2/"
-      };
 
       var NCIPGlobal = window.NCIPGlobal;
 
@@ -29,85 +31,27 @@
       NCIPGlobal.namespace('cache.members');
       NCIPGlobal.namespace('cache.membersDate');
 
-      function urlQueryString(key) {
-          var vars = [], hash;
-          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-          for(var i = 0; i < hashes.length; i++) {
-              hash = hashes[i].split('=');
-              vars.push(hash[0]);
-              vars[hash[0]] = hash[1];
-          }
-          return vars[key];
-      }
-      var repoGroupName = urlQueryString('name');
+      var repoGroupName = NCIPGlobal.urlQueryString('name');
 
       repoGroupName = unescape(repoGroupName);
 
-      function repoUrl(repo) {
-        return repoUrls[repo.name] || repo.html_url;
-      }
-
-      // Put custom repo descriptions in this object, keyed by repo name.
-      var repoDescriptions = {
-        "missingrepo": "Description of missing repo",
-      };
-
-      function repoDescription(repo) {
-        return repoDescriptions[repo.name] || repo.description;
-      }
+      function processMembers(members) {
+          $(function () {
+            if (members) {
+              $("#num-members").text(members.length);
+              }
+          });
+        }
 
       function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + repo.category);
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
-      }
-
-      function addRecentlyUpdatedRepo(repo) {
-        var $item = $("<li>");
-
-        var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
-        $item.append($("<span>").addClass("name").append($name));
-
-        var $time = $("<a>").attr("href", repo.html_url + "/commits").text(strftime("%h %e, %Y", repo.pushed_at));
-        $item.append($("<span>").addClass("time").append($time));
-
-        $item.append('<span class="bullet">&sdot;</span>');
-
-        var $watchers = $("<a>").attr("href", repo.html_url + "/watchers").text(repo.watchers + " stargazers");
-        $item.append($("<span>").addClass("watchers").append($watchers));
-
-        $item.append('<span class="bullet">&sdot;</span>');
-
-        var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
-        $item.append($("<span>").addClass("forks").append($forks));
-
-        $item.appendTo("#recently-updated-repos");
-      }
-
-      function addRecentlyUpdatedRepos(repos) {
-
-          $(function () {
-            $("#num-repos").text(repos.length);
-
-            // Convert pushed_at to Date.
-            $.each(repos, function (i, repo) {
-              repo.pushed_at = new Date(repo.pushed_at);
-            });
-
-            // Sort by most-recently pushed to.
-            repos.sort(function (a, b) {
-              if (a.pushed_at < b.pushed_at) return 1;
-              if (b.pushed_at < a.pushed_at) return -1;
-              return 0;
-            });
-
-            $.each(repos.slice(0, 3), function (i, repo) {
-              addRecentlyUpdatedRepo(repo);
-            });
-        });
-      }
+        if (repo) {
+          var $item = $("<li>").addClass("repo grid-1 " + repo.category);
+          var $link = $("<a>").attr("href", repo.html_url).appendTo($item);
+          $link.append($("<h2>").text(repo.name));
+          $link.append($("<p>").text(repo.description));
+          $item.appendTo("#repos");
+          }
+        }
 
       function selectReposFromGroup(reposFromGithub,repoGroupName) {
 
@@ -119,8 +63,12 @@
 
         $(function () {
           $.each(repoGroups, function (i, group) {
-            if( group.name === repoGroupName ) {
-              repoGroup = group;
+            if( group ) {
+              if( group.name ) {
+                if( group.name === repoGroupName ) {
+                  repoGroup = group;
+                  }
+                }
               }
             });
         });
@@ -133,11 +81,17 @@
             var matchedToGroup = false;
 
             $.each(ncip_repos, function (i, ncip_repo) {
-              if( repo.name === ncip_repo.name ) {
-                if( ncip_repo.group === repoGroupName ) {
-                  matchedToGroup = true;
+
+              if( ncip_repo ) {
+                if( ncip_repo.full_name ) {
+                  if( repo.full_name === ncip_repo.full_name ) {
+                    if( ncip_repo.group === repoGroupName ) {
+                      matchedToGroup = true;
+                      }
+                    }
+                  }
                 }
-              }
+
             });
 
             if( matchedToGroup ) {
@@ -161,50 +115,6 @@
           });
       }
 
-      function getReposFromGithub(repos, page) {
-
-        repos = repos || [];
-        page = page || 1;
-
-        var uri = "https://api.github.com/orgs/ncip/repos?"
-                + "&per_page=100"
-                + "&page="+page;
-
-        var since = null;
-
-        if (window.localStorage) {
-          NCIPGlobal.cache.reposDate = window.localStorage.getItem('NCIPDate');
-          since = NCIPGlobal.cache.reposDate;
-          }
-
-        NCIPGlobal.getJSONIfModified(uri, since, function (result) {
-
-          if ( result.status === 403 ) { // Refused
-            repos = NCIPGlobal.getCachedRepositories();
-            processRepositoriesInGroup(repos);
-            }
-
-          if ( result.status === 304 ) { // Not Modified
-            repos = NCIPGlobal.getCachedRepositories();
-            processRepositoriesInGroup(repos);
-            }
-
-          if ( result.status === 200 ) { // OK Status
-
-            if (result.data && result.data.length > 0) {
-              repos = repos.concat(result.data);
-              getReposFromGithub(repos, page + 1);
-            }
-            else {
-              processRepositoriesInGroup(repos);
-            }
-          }
-
-        });
-
-      }
-      getReposFromGithub();
-
       function processRepositoriesInGroup(repos)  {
 
         $(function () {
@@ -212,15 +122,17 @@
 
             // Convert pushed_at to Date.
             $.each(repos, function (i, repo) {
-              repo.pushed_at = new Date(repo.pushed_at);
+              if (!browserIsIELessThan10) {
+                repo.pushed_at = new Date(repo.pushed_at);
+                }
             });
 
           });
 
           // Sort alphabetically by repository name
           repos.sort(function (a, b) {
-            var namea = a.name.toLowerCase();
-            var nameb = b.name.toLowerCase();
+            var namea = a.full_name.toLowerCase();
+            var nameb = b.full_name.toLowerCase();
             if (namea > nameb) return 1;
             if (nameb > namea) return -1;
             return 0;
@@ -231,44 +143,25 @@
           //
           var reposInGroup = selectReposFromGroup(repos,repoGroupName);
 
-          addRecentlyUpdatedRepos(reposInGroup);
+          NCIPGlobal.addRecentlyUpdatedRepos(reposInGroup);
 
           addReposFromGroup(reposInGroup);
         }
 
-      var since = null;
 
-      if (window.localStorage) {
-        NCIPGlobal.cache.membersDate = window.localStorage.getItem('NCIPDate2');
-        since = NCIPGlobal.cache.membersDate;
+      NCIPGlobal.processReposCallback = processRepositoriesInGroup;
+      NCIPGlobal.processMembersCallback = processMembers;
+
+      NCIPGlobal.initializeCache();
+      NCIPGlobal.findAllOrgsFromReposCatalog(ncip_repos);
+
+      if ( browserIsIELessThan10 ) {
+        NCIPGlobal.getReposFromOneOrg   = NCIPGlobal.getReposFromOneOrgWithoutCORS;
+        NCIPGlobal.getMembersFromOneOrg = NCIPGlobal.getMembersFromOneOrgWithoutCORS;
         }
 
-      NCIPGlobal.getJSONIfModified("https://api.github.com/orgs/ncip/members", since, function (result) {
-
-        if ( result.status === 403 ) { // Refused
-          var members = NCIPGlobal.getCachedMembers();
-          processMembers(members);
-          }
-
-        if ( result.status === 304 ) { // Not Modified
-          var members = NCIPGlobal.getCachedMembers();
-          processMembers(members);
-          }
-
-        if ( result.status === 200 ) { // OK Status
-          var members = result.data;
-          NCIPGlobal.cache.members = JSON.stringify(members);
-          window.localStorage.setItem('NCIPmembers',NCIPGlobal.cache.members);
-          processMembers(members);
-        }
-
-      });
-
-      function processMembers(members) {
-          $(function () {
-            $("#num-members").text(members.length);
-          });
-        }
+      NCIPGlobal.getReposFromAllOrgs();
+      NCIPGlobal.getMembersFromAllOrgs();
 
     })(jQuery);
     </script>
