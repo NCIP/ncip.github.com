@@ -591,4 +591,21 @@ var ncip_repos = [
     "full_name": "OpenXIP/avt-ad-api",
     "group": "OpenXIP"
   },
+  {
+    "full_name": "geworkbench-group/geworkbench_supporting_files",
+    "group": "Microarray Tools"
+  },
+  {
+    "full_name": "geworkbench-group/geworkbench-components",
+    "group": "OpenXIP"
+  },
+  {
+    "full_name": "geworkbench-group/geworkbench-core",
+    "group": "Microarray Tools"
+  },
+  {
+    "full_name": "geworkbench-group/geworkbench-web",
+    "group": "Microarray Tools"
+  }
+  
 ];
