@@ -1,7 +1,7 @@
 ncip.github.com
 ======
 
-The source code of http://ncip.github.com/
+The source code of http://ncip.github.io/
 
 Largely based on the source code of http://twitter.github.com/
 
